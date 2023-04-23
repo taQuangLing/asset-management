@@ -1,11 +1,27 @@
-<form action="action_page.php" method="post">
-    <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required><br>
+<form method="POST" action="{{ route('login') }}">
+    @csrf
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required><br>
+    <div>
+        <label for="email">{{ __('Email') }}</label>
 
-        <button type="submit">Login</button>
+        <div>
+            <input id="email" type="text" name="email" value="{{ old('email') }}" required autofocus />
+        </div>
+    </div>
+
+    <div>
+        <label for="password">{{ __('Password') }}</label>
+
+        <div>
+            <input id="password" type="password" name="password" required autocomplete="current-password" />
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <button type="submit">
+                {{ __('Login') }}
+            </button>
+        </div>
     </div>
 </form>
