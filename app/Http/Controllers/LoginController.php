@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
@@ -24,16 +28,16 @@ class LoginController extends Controller
         }
     }
 
-    public function showLoginForm()
+    public function showLoginForm(): Factory|View|Application
     {
         return view('login');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): RedirectResponse
     {
-        $username = $request->input('email');
+        $username = $request->input('username');
         $password = $request->input('password');
-
+//        dd($username);
         if ($this->validateUser($username, $password)) {
             // Authentication successful
             // Redirect to dashboard or homepage

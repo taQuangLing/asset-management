@@ -24,3 +24,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/quanlytaisan', function () {
     return view('layout');
 })->name('quanlytaisan');
+
+Route::get('/phieunhap', function () {
+    return view('quanlyphieunhap');
+})->name('phieunhap');
