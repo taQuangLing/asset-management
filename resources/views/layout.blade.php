@@ -1,407 +1,447 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+{{--    <link rel="stylesheet" href="../css/app.css">--}}
+{{--    <link rel="stylesheet" href="../css/layout.css">--}}
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="./resources/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="./resources/css/layout.css">
-
-
-    <!-- Styles -->
     <style>
-        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-        html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%
-        }
-
-        body {
-            margin: 0
-        }
-
-        a {
-            background-color: transparent
-        }
-
-        [hidden] {
-            display: none
-        }
-
-        html {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-            line-height: 1.5
-        }
-
-        *,
-        :after,
-        :before {
+        .layout {
             box-sizing: border-box;
-            border: 0 solid #e2e8f0
+            position: relative;
         }
 
-        a {
-            color: inherit;
-            text-decoration: inherit
+        header {
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--color-gray--);
+            padding-right: 20px;
         }
 
-        svg,
-        video {
+        main {
+            display: grid;
+            grid-template-columns: 13% 83%;
+            column-gap: 4%;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: var(--color-gray--);
+        }
+
+        .sidebar ul {
+            height: 85vh;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .sidebar ul li {
             display: block;
-            vertical-align: middle
+            margin: 10px 0;
+            width: 100%;
+            padding: 12px 40px;
+            list-style: none;
+            transition: all .3s ease;
+            cursor: pointer;
+            box-sizing: border-box;
         }
 
-        video {
-            max-width: 100%;
-            height: auto
+        .sidebar ul li.active {
+            background-color: var(--color-green-dark--);
         }
 
-        .bg-white {
-            --tw-bg-opacity: 1;
-            background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+
+
+        .sidebar ul li:hover {
+            background-color: var(--color-green-dark--);
         }
 
-        .bg-gray-100 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(243 244 246 / var(--tw-bg-opacity))
+        .user-info {
+            margin-left: 10px;
         }
 
-        .border-gray-200 {
-            --tw-border-opacity: 1;
-            border-color: rgb(229 231 235 / var(--tw-border-opacity))
+        .main {
+            padding: 20px 5px;
+
         }
 
-        .border-t {
-            border-top-width: 1px
+        input {
+            width: 400px;
+            font-size: 16px;
         }
 
-        .flex {
-            display: flex
+        .search {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+            column-gap: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
         }
 
-        .grid {
-            display: grid
+        table {
+            margin-top: 20px;
         }
 
-        .hidden {
-            display: none
+        table button {
+            margin: 5px auto;
+            font-size: 16px;
+            display: block;
         }
 
-        .items-center {
-            align-items: center
+        .filter {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            column-gap: 10px;
         }
 
-        .justify-center {
-            justify-content: center
+        .filter input {
+            width: 170px;
         }
 
-        .font-semibold {
-            font-weight: 600
+        .filter button {
+            width: 100px;
         }
 
-        .h-5 {
-            height: 1.25rem
+        input[type="date"] {
+            width: 150px;
         }
 
-        .h-8 {
-            height: 2rem
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
         }
 
-        .h-16 {
-            height: 4rem
+        .pagination {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
         }
 
-        .text-sm {
-            font-size: .875rem
+        .pagination li {
+            margin: 0 1px;
         }
 
-        .text-lg {
-            font-size: 1.125rem
+        .pagination li a {
+            width: 60px;
+            padding: 5px;
+            display: inline-block;
+            color: black;
+
         }
 
-        .leading-7 {
-            line-height: 1.75rem
+        .pagination li a:hover {
+            background-color: var(--color-green-dark--);
+            color: black;
         }
 
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto
+        .pagination li:first-of-type,
+        .pagination li:last-of-type {
+            margin: 0 20px;
         }
 
-        .ml-1 {
-            margin-left: .25rem
+        .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.15);
+            width: 1000px;
+            height: 800px;
+            overflow-y: scroll;
+            border-radius: 10px;
+            display: none;
         }
 
-        .mt-2 {
-            margin-top: .5rem
+        .modal .modal-active {
+            display: block;
         }
 
-        .mr-2 {
-            margin-right: .5rem
+        .modal .wrapper {
+            padding: 20px 30px;
+            padding-bottom: 0;
         }
 
-        .ml-2 {
-            margin-left: .5rem
+        .field-group {
+            display: grid;
+            grid-template-columns: 30% 65%;
+            column-gap: 5%;
+            place-items: center start;
+            padding: 5px 60px;
         }
 
-        .mt-4 {
-            margin-top: 1rem
+        .field-group-2 {
+            width: 80%;
+            grid-template-columns: 30% 65%;
         }
 
-        .ml-4 {
-            margin-left: 1rem
+        .field-group input,
+        .field-group select {
+            width: 100%;
+            cursor: pointer;
         }
 
-        .mt-8 {
-            margin-top: 2rem
+        .field-group p {
+            margin: 5px;
         }
 
-        .ml-12 {
-            margin-left: 3rem
+        .modal .action {
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            background-color: #eee;
+            /* transform: translateX(-50%); */
+            width: 100%;
+            margin: 30px auto 0;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, .3);
+            border-top: 1px solid #ccc;
         }
 
-        .-mt-px {
-            margin-top: -1px
+        .action .btn {
+            margin-right: 20px;
+            width: 100px;
         }
 
-        .max-w-6xl {
-            max-width: 72rem
-        }
-
-        .min-h-screen {
-            min-height: 100vh
-        }
-
-        .overflow-hidden {
-            overflow: hidden
-        }
-
-        .p-6 {
-            padding: 1.5rem
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem
-        }
-
-        .pt-8 {
-            padding-top: 2rem
-        }
-
-        .fixed {
-            position: fixed
-        }
-
-        .relative {
-            position: relative
-        }
-
-        .top-0 {
-            top: 0
-        }
-
-        .right-0 {
-            right: 0
-        }
-
-        .shadow {
-            --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
-            --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-        }
-
-        .text-center {
-            text-align: center
-        }
-
-        .text-gray-200 {
-            --tw-text-opacity: 1;
-            color: rgb(229 231 235 / var(--tw-text-opacity))
-        }
-
-        .text-gray-300 {
-            --tw-text-opacity: 1;
-            color: rgb(209 213 219 / var(--tw-text-opacity))
-        }
-
-        .text-gray-400 {
-            --tw-text-opacity: 1;
-            color: rgb(156 163 175 / var(--tw-text-opacity))
-        }
-
-        .text-gray-500 {
-            --tw-text-opacity: 1;
-            color: rgb(107 114 128 / var(--tw-text-opacity))
-        }
-
-        .text-gray-600 {
-            --tw-text-opacity: 1;
-            color: rgb(75 85 99 / var(--tw-text-opacity))
-        }
-
-        .text-gray-700 {
-            --tw-text-opacity: 1;
-            color: rgb(55 65 81 / var(--tw-text-opacity))
-        }
-
-        .text-gray-900 {
-            --tw-text-opacity: 1;
-            color: rgb(17 24 39 / var(--tw-text-opacity))
-        }
-
-        .underline {
-            text-decoration: underline
-        }
-
-        .antialiased {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
-        }
-
-        .w-5 {
-            width: 1.25rem
-        }
-
-        .w-8 {
-            width: 2rem
-        }
-
-        .w-auto {
-            width: auto
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr))
-        }
-
-        @media (min-width: 640px) {
-            .sm\:rounded-lg {
-                border-radius: .5rem
-            }
-
-            .sm\:block {
-                display: block
-            }
-
-            .sm\:items-center {
-                align-items: center
-            }
-
-            .sm\:justify-start {
-                justify-content: flex-start
-            }
-
-            .sm\:justify-between {
-                justify-content: space-between
-            }
-
-            .sm\:h-20 {
-                height: 5rem
-            }
-
-            .sm\:ml-0 {
-                margin-left: 0
-            }
-
-            .sm\:px-6 {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem
-            }
-
-            .sm\:pt-0 {
-                padding-top: 0
-            }
-
-            .sm\:text-left {
-                text-align: left
-            }
-
-            .sm\:text-right {
-                text-align: right
-            }
-        }
-
-        @media (min-width: 768px) {
-            .md\:border-t-0 {
-                border-top-width: 0
-            }
-
-            .md\:border-l {
-                border-left-width: 1px
-            }
-
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .lg\:px-8 {
-                padding-left: 2rem;
-                padding-right: 2rem
-            }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .dark\:bg-gray-800 {
-                --tw-bg-opacity: 1;
-                background-color: rgb(31 41 55 / var(--tw-bg-opacity))
-            }
-
-            .dark\:bg-gray-900 {
-                --tw-bg-opacity: 1;
-                background-color: rgb(17 24 39 / var(--tw-bg-opacity))
-            }
-
-            .dark\:border-gray-700 {
-                --tw-border-opacity: 1;
-                border-color: rgb(55 65 81 / var(--tw-border-opacity))
-            }
-
-            .dark\:text-white {
-                --tw-text-opacity: 1;
-                color: rgb(255 255 255 / var(--tw-text-opacity))
-            }
-
-            .dark\:text-gray-400 {
-                --tw-text-opacity: 1;
-                color: rgb(156 163 175 / var(--tw-text-opacity))
-            }
-
-            .dark\:text-gray-500 {
-                --tw-text-opacity: 1;
-                color: rgb(107 114 128 / var(--tw-text-opacity))
-            }
+        .imgcontainer {
+            text-align: left;
+            margin: 24px 5px 12px 30px;
+            border-radius: 50%;
         }
     </style>
 
     <style>
+        :root {
+            --color-gray--: #e2f0d9;
+            --color-green--: #87c540;
+            --color-green-light--: #e7fada;
+            --color-green-dark--: #badaa6;
+        }
+
         body {
-            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        .btn-green {
+            background-color: var(--color-green--);
+        }
+
+        .btn-red {
+            background-color: red;
+        }
+
+        /* BUTTON */
+        .btn {
+            border-radius: 3px;
+            border: 1px solid VAR(--color-green--);
+            box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.15385;
+            margin: 0;
+            color: white;
+            font-weight: 600;
+            outline: none;
+            padding: 10px 20px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+            white-space: nowrap;
+            transition: all .3s ease;
+        }
+
+        .btn-green:hover,
+        .btn-green:focus {
+            background-color: white;
+            color: #87c540;
+            border-color: var(--color-green--);
+        }
+
+        .btn-red:hover,
+        .btn-red:focus {
+            background-color: white;
+            color: red;
+            border-color: red;
+        }
+
+        .btn:focus {
+            box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+        }
+
+        .btn:active {
+            /* background-color: var(); */
+            box-shadow: none;
+            /* color: #2c5777; */
+        }
+
+        .input {
+            padding: 10px 10px;
+            padding-right: 0;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #87c540;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+
+        table tr th {
+            border: solid 1px black;
+            font-weight: 600;
+            height: 60px;
+            font-weight: 600;
+            background-color: var(--color-gray--);
+        }
+
+        table tr td {
+            border: solid 1px black;
+            height: 60px;
+            padding: 10px;
+        }
+
+        .underline-after-text {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .underline-after-text::after {
+            content: "";
+            display: inline-block;
+            height: 0.5em;
+            vertical-align: bottom;
+            width: 100%;
+            margin-right: -100%;
+            margin-left: 10px;
+            border-top: 1px solid black;
+            /* position: absolute;
+            right: 0; */
+        }
+
+        /* Customize the label (the container) */
+        .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .checkbox-container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .checkbox-container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+
+        /*Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .checkbox-container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .checkbox-container .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between !important;
+            align-items: center;
         }
     </style>
+
 </head>
 
-<body class="antialiased">
+<body>
 <div class="layout">
     <header>
-        <div class="logo"></div>
-        <div class="user">
-            <button>Dang xuat</button>
-            <div class="user-info">
-                avatar icon
-            </div>
+
+        <div class="imgcontainer">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
+                alt="Logo" class="logo" width="50px" height="50px">
+        </div>
+        <h2>Cùng nhau quản lý tài sản </h2>
+        <div class="imgcontainer">
+            <span>Đăng xuất</span>
+            <img
+                src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-1/336171687_129162599933758_439339820751928032_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=xM9NVGHRHwUAX8LJYml&_nc_ht=scontent.fhan1-1.fna&oh=00_AfDXs0xiqn-k64SgAQS_wgf4ElmBn07RCvh5L7dzh9npCQ&oe=644A4641"
+                alt="Avatar" class="avatar" width="50px" height="50px">
         </div>
     </header>
     <main>
@@ -416,10 +456,203 @@
             </ul>
         </div>
         <div class="main">
-            @include_once('quanlytaisan.php')
+            <div class="search">
+                <input class="input" type="text" placeholder="Ten tai san"/>
+                <button class="btn btn-green">Tim kiem</button>
+
+            </div>
+
+            <div class="filter">
+                <input class="input" type="text" placeholder="Ma tai san"/>
+                <input class="input" type="text" placeholder="Ma phieu nhap"/>
+                <input class="input" type="text" placeholder="Loai tai san"/>
+                <input class="input" type="text" placeholder="Nha cung cap"/>
+                Tu ngay: <input class="input" type="date" placeholder="Tu ngay"/>
+                Den ngay: <input class="input" type="date" placeholder="Den ngay"/>
+                <label class="checkbox-container">Han bao hanh
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <button class="btn btn-green">Loc</button>
+            </div>
+
+            <div style="text-align: start; margin-top: 20px;">
+                <button class="btn btn-green">Them moi</button>
+
+            </div>
+
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th style="width: 80px;">Ma tai san</th>
+                        <th style="width: 80px;">Ma phieu nhap</th>
+                        <th style="width: 280px;">Ten tai san</th>
+                        <th>Loai tai san</th>
+                        <th>Don gia(VND)</th>
+                        <th style="width: 100px;">So luong</th>
+                        <th style="width: 150px;">Han bao hanh</th>
+                        <th>Nha cung cap</th>
+                        <th>Thao tac</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>TS001</td>
+                        <td>PN003</td>
+                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
+                        <td>Laptop</td>
+                        <td>43.990.000</td>
+                        <td>1</td>
+                        <td>30/04/2024</td>
+                        <td>CTCP ban le ky thuat so FPT</td>
+                        <td>
+                            <button class="btn btn-green btn-detail">Chi tiet</button>
+                            <button class="btn btn-red btn-delete">Xoa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>TS001</td>
+                        <td>PN003</td>
+                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
+                        <td>Laptop</td>
+                        <td>43.990.000</td>
+                        <td>1</td>
+                        <td>30/04/2024</td>
+                        <td>CTCP ban le ky thuat so FPT</td>
+                        <td>
+                            <button class="btn btn-green btn-detail">Chi tiet</button>
+                            <button class="btn btn-red btn-delete">Xoa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>TS001</td>
+                        <td>PN003</td>
+                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
+                        <td>Laptop</td>
+                        <td>43.990.000</td>
+                        <td>1</td>
+                        <td>30/04/2024</td>
+                        <td>CTCP ban le ky thuat so FPT</td>
+                        <td>
+                            <button class="btn btn-green btn-detail">Chi tiet</button>
+                            <button class="btn btn-red btn-delete">Xoa</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav aria-label="pagination">
+                <ul class="pagination">
+                    <li><a href=""><span aria-hidden="true">«</span><span class="visuallyhidden">Truoc</span></a></li>
+                    <li><a href=""><span class="visuallyhidden"></span>1</a></li>
+                    <li><a href="" aria-current="page"><span class="visuallyhidden"></span>2</a></li>
+                    <li><a href=""><span class="visuallyhidden"></span>3</a></li>
+                    <li><a href=""><span class="visuallyhidden"></span>4</a></li>
+                    <li><a href=""><span class="visuallyhidden">Sau</span><span aria-hidden="true">»</span></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </main>
+
+    <div class="modal modal-active">
+        <div class="wrapper">
+            <h3 class="underline-after-text">
+                Thong tin tai san
+            </h3>
+            <div class="field-group">
+                <label>Ma tai san:</label>
+                <p>DXY00002</p>
+            </div>
+            <div class="field-group">
+                <label>Ten tai san:</label>
+                <input class="input" type="text" value="Laptop Dell XPS 13 9320 i5 12340P">
+            </div>
+            <div class="field-group">
+                <label>Gia tien:</label>
+                <input class="input" type="text" value="45.000.000">
+            </div>
+            <div class="field-group">
+                <label>Loai tai san:</label>
+                <input class="input" type="text" value="Laptop">
+            </div>
+            <div class="field-group">
+                <label>Hang san xuat:</label>
+                <input class="input" type="text" value="Nha may san xuat QuangLing">
+            </div>
+            <div class="field-group">
+                <label>Han bao hanh:</label>
+                <input class="input" type="date" value="30/09/2024">
+            </div>
+            <div class="field-group">
+                <label>Ma phieu nhap:</label>
+                <p>TQL0001</p>
+            </div>
+            <div class="field-group">
+                <label>Ngay nhap:</label>
+                <p>20/01/2023</p>
+            </div>
+            <div class="field-group">
+                <label>Kich hoat:</label>
+                <select class="input">
+                    <option>Chua kich hoat</option>
+                    <option>Da kich hoat</option>
+                </select>
+            </div>
+            <div class="field-group">
+                <label>Tinh trang:</label>
+                <select class="input">
+                    <option>Tot</option>
+                    <option>Bao hanh</option>
+                    <option>Da thanh ly</option>
+                    <option>Xoa</option>
+                </select>
+            </div>
+            <h3 class="underline-after-text">
+                Thong tin nha cung cap
+            </h3>
+            <div class="field-group">
+                <label>Ma nha cung cap:</label>
+                <p>TQL</p>
+            </div>
+            <div class="field-group">
+                <label>Ten nha cung cap:</label>
+                <p>Nha cung cap Qling</p>
+            </div>
+            <div class="field-group">
+                <label>Dia chi:</label>
+                <p>Hai Ba Trung, Ha Noi</p>
+            </div>
+            <div class="field-group">
+                <label>So dien thoai:</label>
+                <p>0123456789</p>
+            </div>
+
+            <h3 class="underline-after-text">
+                Mo ta tai san
+            </h3>
+            <div class="field-group">
+                <label>Mo ta:</label>
+                <input class="input" type="text" placeholder="Abxasfd...">
+            </div>
+        </div>
+
+        <div class="action">
+            <button class="btn btn-green">Xong</button>
+            <button class="btn btn-red btn-close">Huy</button>
+        </div>
+    </div>
 </div>
+
+</div>
+
+<script src="../js/layout.js"></script>
 </body>
 
 </html>
