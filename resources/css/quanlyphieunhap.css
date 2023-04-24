@@ -1,0 +1,32 @@
+@import "../css/app.css";
+
+.modal {
+  display: block;
+}
+
+.grid-64 {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  place-items: start;
+}
+
+.asset-detail {
+  height: 220px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 30px;
+}
+
+.asset-detail-btn {
+  text-align: right;
+  padding-right: 50px;
+}
+
+.asset-detail-btn button {
+  width: 100px;
+}
+
+.asset-detail-total {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}

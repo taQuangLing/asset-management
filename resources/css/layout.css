@@ -43,8 +43,14 @@ main {
   box-sizing: border-box;
 }
 
+.sidebar ul li.active {
+  background-color: var(--color-green-dark--);
+}
+
+
+
 .sidebar ul li:hover {
-  background-color: var(--color-green-light--);
+  background-color: var(--color-green-dark--);
 }
 
 .user-info {
@@ -129,7 +135,7 @@ nav {
 }
 
 .pagination li a:hover {
-  background-color: var(--color-green-light--);
+  background-color: var(--color-green-dark--);
   color: black;
 }
 
@@ -169,6 +175,11 @@ nav {
   column-gap: 5%;
   place-items: center start;
   padding: 5px 60px;
+}
+
+.field-group-2 {
+  width: 80%;
+  grid-template-columns: 30% 65%;
 }
 
 .field-group input,

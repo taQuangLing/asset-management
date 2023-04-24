@@ -2,6 +2,7 @@
   --color-gray--: #e2f0d9;
   --color-green--: #87c540;
   --color-green-light--: #e7fada;
+  --color-green-dark--: #badaa6;
 }
 
 body {
@@ -185,4 +186,10 @@ table tr td {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
 }
