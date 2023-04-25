@@ -28,3 +28,5 @@ Route::get('/quanlytaisan', function () {
 Route::get('/phieunhap', function () {
     return view('quanlyphieunhap');
 })->name('phieunhap');
+
+
