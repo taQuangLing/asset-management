@@ -11,6 +11,7 @@ class AssetDetail extends Model
     protected $table = 'asset_detail';
 
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_phieu_nhap',

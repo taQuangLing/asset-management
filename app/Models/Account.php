@@ -15,6 +15,7 @@ class Account extends Authenticatable
     protected $table = 'accounts';
     protected $primaryKey = 'ma_tai_khoan';
     public $incrementing = false;
+    public $timestamps = false;
 
 
     /**

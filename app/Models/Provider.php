@@ -13,6 +13,7 @@ class Provider extends Model
     protected $primaryKey = 'ma_ncc';
 
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_ncc',

@@ -12,6 +12,7 @@ class LiquidationList extends Model
     protected $table = 'liquidation_list';
     protected $primaryKey = 'ma_ds';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_ds',
@@ -24,7 +25,7 @@ class LiquidationList extends Model
 
     public function nhanVien()
     {
-        return $this->belongsTo(Staffs::class, 'ma_nhan_vien', 'ma_nhan_vien');
+        return $this->belongsTo(Staff::class, 'ma_nhan_vien', 'ma_nhan_vien');
     }
 
     public function taiSan()

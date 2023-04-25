@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -18,7 +17,6 @@ return new class extends Migration
             $table->char('ma_tai_san', 10);
             $table->bigInteger('don_gia');
             $table->integer('so_luong');
-            $table->primary(['ma_phieu_nhap', 'ma_tai_san']);
             $table->foreign('ma_phieu_nhap')->references('ma_phieu_nhap')->on('coupons');
             $table->foreign('ma_tai_san')->references('ma_tai_san')->on('assets');
         });

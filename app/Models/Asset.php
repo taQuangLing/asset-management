@@ -13,6 +13,7 @@ class Asset extends Model
     protected $primaryKey = 'ma_tai_san';
 
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_tai_san',

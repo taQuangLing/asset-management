@@ -12,6 +12,7 @@ class GuaranteeInfo extends Model
     protected $table = 'guarantee_info';
     protected $primaryKey = 'ma_bao_hanh';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_bao_hanh',
@@ -34,6 +35,6 @@ class GuaranteeInfo extends Model
 
     public function nhanVien()
     {
-        return $this->belongsTo(Staffs::class, 'ma_nhan_vien', 'ma_nhan_vien');
+        return $this->belongsTo(Staff::class, 'ma_nhan_vien', 'ma_nhan_vien');
     }
 }

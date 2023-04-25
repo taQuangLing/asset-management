@@ -13,6 +13,7 @@ class Coupon extends Model
     protected $primaryKey = 'ma_phieu_nhap';
 
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_phieu_nhap',
@@ -28,6 +29,6 @@ class Coupon extends Model
 
     public function nhanVien()
     {
-        return $this->belongsTo(Staffs::class, 'ma_nhan_vien', 'ma_nhan_vien');
+        return $this->belongsTo(Staff::class, 'ma_nhan_vien', 'ma_nhan_vien');
     }
 }

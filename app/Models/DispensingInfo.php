@@ -12,6 +12,7 @@ class DispensingInfo extends Model
     protected $table = 'dispensing_info';
     protected  $primaryKey = 'ma_cap_nhat';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'ma_cap_nhat',
@@ -28,6 +29,6 @@ class DispensingInfo extends Model
 
     public function nhanVien()
     {
-        return $this->belongsTo(Staffs::class, 'ma_nhan_vien', 'ma_nhan_vien');
+        return $this->belongsTo(Staff::class, 'ma_nhan_vien', 'ma_nhan_vien');
     }
 }

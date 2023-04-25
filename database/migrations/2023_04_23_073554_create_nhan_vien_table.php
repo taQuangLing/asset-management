@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ten', 100);
             $table->date('ngay_sinh');
             $table->string('cccd', 20);
-            $table->string('chuc_vu', 30);
+            $table->string('chuc_vu', 100);
             $table->string('phong_ban', 20);
             $table->char('sdt', 10);
             $table->string('email', 100);
