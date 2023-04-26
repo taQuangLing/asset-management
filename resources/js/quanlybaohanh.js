@@ -32,8 +32,6 @@ function reloadModalByFilter() {
       <button class="btn btn-green">Kích hoạt bảo hành</button>
       <button class="btn btn-yellow btn-close">Thoát</button>
     `);
-    btnCancel = document.querySelector('.btn-close');
-    return;
   }
   else if(currentFilter.classList.contains("filter-wait-guarantee")) {
     guaranteePlaceholder.insertAdjacentHTML('afterbegin', `
@@ -45,6 +43,10 @@ function reloadModalByFilter() {
         <label>Lý do bảo hành:</label>
         <textarea class="input">Khi khởi động máy tính thì màn hình đen ngòm</textarea>
       </div>
+    `);
+    btnActionList.insertAdjacentHTML('afterbegin', `
+      <button class="btn btn-green">Lưu</button>
+      <button class="btn btn-yellow btn-close">Thoát</button>
     `);
   }
   else if(currentFilter.classList.contains("filter-guarantying")) {
@@ -64,6 +66,10 @@ function reloadModalByFilter() {
         <label>Mô tả tình trạng sau bảo hành:</label>
         <input class="input" type="text" value="Lỗi main không thể bào hành">
       </div>
+    `);
+    btnActionList.insertAdjacentHTML('afterbegin', `
+      <button class="btn btn-green">Lưu</button>
+      <button class="btn btn-yellow btn-close">Thoát</button>
     `);
   }
   else if(currentFilter.classList.contains("filter-result")) {
@@ -93,12 +99,11 @@ function reloadModalByFilter() {
         <p>Khi khởi động máy tính thì màn hình đen ngòm</p>
       </div>
     `);
+    btnActionList.insertAdjacentHTML('afterbegin', `
+      <button class="btn btn-yellow btn-close">Thoát</button>
+    `);
   }
-  console.log('hrlo')
-  btnActionList.insertAdjacentHTML('afterbegin', `
-    <button class="btn btn-green">Lưu</button>
-    <button class="btn btn-yellow btn-close">Thoát</button>
-  `);
+
   btnCancel = document.querySelector('.btn-close');
 }
 
