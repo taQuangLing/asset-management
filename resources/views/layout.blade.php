@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-{{--    <link rel="stylesheet" href="../css/app.css">--}}
-{{--    <link rel="stylesheet" href="../css/layout.css">--}}
+    {{--    <link rel="stylesheet" href="../css/app.css">--}}
+    {{--    <link rel="stylesheet" href="../css/layout.css">--}}
 
     <style>
         .layout {
@@ -56,7 +56,6 @@
         .sidebar ul li.active {
             background-color: var(--color-green-dark--);
         }
-
 
 
         .sidebar ul li:hover {
@@ -384,12 +383,12 @@
         }
 
         /* On mouse-over, add a grey background color */
-        .checkbox-container:hover input~.checkmark {
+        .checkbox-container:hover input ~ .checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        .checkbox-container input:checked~.checkmark {
+        .checkbox-container input:checked ~ .checkmark {
             background-color: #2196F3;
         }
 
@@ -401,7 +400,7 @@
         }
 
         /* Show the checkmark when checked */
-        .checkbox-container input:checked~.checkmark:after {
+        .checkbox-container input:checked ~ .checkmark:after {
             display: block;
         }
 
@@ -428,6 +427,7 @@
 </head>
 
 <body>
+<div id="data" style="display:none;">{{ $data }}</div>
 <div class="layout">
     <header>
 
@@ -481,70 +481,70 @@
 
             </div>
 
-            <div class="table">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th style="width: 80px;">Ma tai san</th>
-                        <th style="width: 80px;">Ma phieu nhap</th>
-                        <th style="width: 280px;">Ten tai san</th>
-                        <th>Loai tai san</th>
-                        <th>Don gia(VND)</th>
-                        <th style="width: 100px;">So luong</th>
-                        <th style="width: 150px;">Han bao hanh</th>
-                        <th>Nha cung cap</th>
-                        <th>Thao tac</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>TS001</td>
-                        <td>PN003</td>
-                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
-                        <td>Laptop</td>
-                        <td>43.990.000</td>
-                        <td>1</td>
-                        <td>30/04/2024</td>
-                        <td>CTCP ban le ky thuat so FPT</td>
-                        <td>
-                            <button class="btn btn-green btn-detail">Chi tiet</button>
-                            <button class="btn btn-red btn-delete">Xoa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>TS001</td>
-                        <td>PN003</td>
-                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
-                        <td>Laptop</td>
-                        <td>43.990.000</td>
-                        <td>1</td>
-                        <td>30/04/2024</td>
-                        <td>CTCP ban le ky thuat so FPT</td>
-                        <td>
-                            <button class="btn btn-green btn-detail">Chi tiet</button>
-                            <button class="btn btn-red btn-delete">Xoa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>TS001</td>
-                        <td>PN003</td>
-                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>
-                        <td>Laptop</td>
-                        <td>43.990.000</td>
-                        <td>1</td>
-                        <td>30/04/2024</td>
-                        <td>CTCP ban le ky thuat so FPT</td>
-                        <td>
-                            <button class="btn btn-green btn-detail">Chi tiet</button>
-                            <button class="btn btn-red btn-delete">Xoa</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="table" id="table">
+                {{--                <table>--}}
+                {{--                    <thead>--}}
+                {{--                    <tr>--}}
+                {{--                        <th>STT</th>--}}
+                {{--                        <th style="width: 80px;">Ma tai san</th>--}}
+                {{--                        <th style="width: 80px;">Ma phieu nhap</th>--}}
+                {{--                        <th style="width: 280px;">Ten tai san</th>--}}
+                {{--                        <th>Loai tai san</th>--}}
+                {{--                        <th>Don gia(VND)</th>--}}
+                {{--                        <th style="width: 100px;">So luong</th>--}}
+                {{--                        <th style="width: 150px;">Han bao hanh</th>--}}
+                {{--                        <th>Nha cung cap</th>--}}
+                {{--                        <th>Thao tac</th>--}}
+                {{--                    </tr>--}}
+                {{--                    </thead>--}}
+                {{--                    <tbody>--}}
+                {{--                    <tr>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>TS001</td>--}}
+                {{--                        <td>PN003</td>--}}
+                {{--                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>--}}
+                {{--                        <td>Laptop</td>--}}
+                {{--                        <td>43.990.000</td>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>30/04/2024</td>--}}
+                {{--                        <td>CTCP ban le ky thuat so FPT</td>--}}
+                {{--                        <td>--}}
+                {{--                            <button class="btn btn-green btn-detail">Chi tiet</button>--}}
+                {{--                            <button class="btn btn-red btn-delete">Xoa</button>--}}
+                {{--                        </td>--}}
+                {{--                    </tr>--}}
+                {{--                    <tr>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>TS001</td>--}}
+                {{--                        <td>PN003</td>--}}
+                {{--                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>--}}
+                {{--                        <td>Laptop</td>--}}
+                {{--                        <td>43.990.000</td>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>30/04/2024</td>--}}
+                {{--                        <td>CTCP ban le ky thuat so FPT</td>--}}
+                {{--                        <td>--}}
+                {{--                            <button class="btn btn-green btn-detail">Chi tiet</button>--}}
+                {{--                            <button class="btn btn-red btn-delete">Xoa</button>--}}
+                {{--                        </td>--}}
+                {{--                    </tr>--}}
+                {{--                    <tr>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>TS001</td>--}}
+                {{--                        <td>PN003</td>--}}
+                {{--                        <td>Laptop Dell XSP 13 9320 i5 1240P</td>--}}
+                {{--                        <td>Laptop</td>--}}
+                {{--                        <td>43.990.000</td>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>30/04/2024</td>--}}
+                {{--                        <td>CTCP ban le ky thuat so FPT</td>--}}
+                {{--                                        <td>--}}
+                {{--                                            <button class="btn btn-green btn-detail">Chi tiet</button>--}}
+                {{--                                            <button class="btn btn-red btn-delete">Xoa</button>--}}
+                {{--                                        </td>--}}
+                {{--                    </tr>--}}
+                {{--                    </tbody>--}}
+                {{--                </table>--}}
             </div>
 
             <nav aria-label="pagination">
@@ -563,75 +563,75 @@
 
     <div class="modal modal-active">
         <div class="wrapper">
-            <h3 class="underline-after-text">
-                Thong tin tai san
+            <h3 class="underline-after-text" id="thong-tin-tai-san">
+                Thông tin tài sản
             </h3>
             <div class="field-group">
-                <label>Ma tai san:</label>
-                <p>DXY00002</p>
+                <label>Mã tài sản :</label>
+                <p id="ma-tai-san">DXY00002</p>
             </div>
             <div class="field-group">
-                <label>Ten tai san:</label>
-                <input class="input" type="text" value="Laptop Dell XPS 13 9320 i5 12340P">
+                <label>Tên tài sản :</label>
+                <input class="input" id="ten-tai-san" type="text" value="Laptop Dell XPS 13 9320 i5 12340P">
             </div>
             <div class="field-group">
-                <label>Gia tien:</label>
-                <input class="input" type="text" value="45.000.000">
+                <label>Giá tiền:</label>
+                <input class="input" id="gia-tien" type="text" value="45.000.000">
             </div>
             <div class="field-group">
-                <label>Loai tai san:</label>
-                <input class="input" type="text" value="Laptop">
+                <label>Loại tài sản:</label>
+                <input class="input" id="loai-tai-san" type="text" value="Laptop">
             </div>
             <div class="field-group">
-                <label>Hang san xuat:</label>
-                <input class="input" type="text" value="Nha may san xuat QuangLing">
+                <label>Hãng sản xuất:</label>
+                <input class="input" id="hang-san-xuat" type="text" value="Nha may san xuat QuangLing">
             </div>
             <div class="field-group">
-                <label>Han bao hanh:</label>
-                <input class="input" type="date" value="30/09/2024">
+                <label>Hạn bảo hành:</label>
+                <input class="input" id="han-bao-hanh" type="text" value="30/09/2024">
             </div>
             <div class="field-group">
                 <label>Ma phieu nhap:</label>
-                <p>TQL0001</p>
+                <p id="ma-phieu-dien">TQL0001</p>
             </div>
             <div class="field-group">
                 <label>Ngay nhap:</label>
-                <p>20/01/2023</p>
+                <p id="ngay-nhap">20/01/2023</p>
             </div>
             <div class="field-group">
                 <label>Kich hoat:</label>
-                <select class="input">
+                <select id="kich-hoat" class="input">
                     <option>Chua kich hoat</option>
                     <option>Da kich hoat</option>
                 </select>
             </div>
             <div class="field-group">
                 <label>Tinh trang:</label>
-                <select class="input">
+                <select id="tinh-trang" class="input">
                     <option>Tot</option>
                     <option>Bao hanh</option>
                     <option>Da thanh ly</option>
                     <option>Xoa</option>
                 </select>
             </div>
-            <h3 class="underline-after-text">
+            <h3 class=" underline-after-text">
                 Thong tin nha cung cap
             </h3>
             <div class="field-group">
                 <label>Ma nha cung cap:</label>
-                <p>TQL</p>
+                <p id="ma-ncc">TQL</p>
             </div>
             <div class="field-group">
                 <label>Ten nha cung cap:</label>
-                <p>Nha cung cap Qling</p>
+                <p id="ten-ncc">Nha cung cap Qling</p>
             </div>
             <div class="field-group">
                 <label>Dia chi:</label>
-                <p>Hai Ba Trung, Ha Noi</p>
+                <p id="dia-chi">Hai Ba Trung, Ha Noi</p>
             </div>
             <div class="field-group">
                 <label>So dien thoai:</label>
-                <p>0123456789</p>
+                <p id="sdt">0123456789</p>
             </div>
 
             <h3 class="underline-after-text">
@@ -639,7 +639,10 @@
             </h3>
             <div class="field-group">
                 <label>Mo ta:</label>
-                <input class="input" type="text" placeholder="Abxasfd...">
+                {{--                <input class="input" type="text" placeholder="Abxasfd...">--}}
+                <textarea id="mo-ta" rows="5" cols="60">
+
+                </textarea>
             </div>
         </div>
 
@@ -648,14 +651,81 @@
             <button class="btn btn-red btn-close">Huy</button>
         </div>
     </div>
-</div>
+
 
 </div>
 
-<script src="../js/layout.js"></script>
+</div>
+
 <script>
 
+    const data = JSON.parse(document.getElementById('data').textContent);
+    console.log("Data:", data);
 
+    function createTable(data) {
+        var table = document.createElement('table');
+        var headerRow = document.createElement('tr');
+        var headers = Object.keys(data[0]);
+        var ma_tai_san = Object.values(data[1]);
+        var count = 1
+        // Create table headers
+
+        var th = document.createElement('th');
+        th.textContent = "STT";
+        headerRow.appendChild(th);
+
+        headers.forEach(function (header) {
+            var th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+        });
+        th = document.createElement('th');
+        th.textContent = 'Thao tác ';
+        headerRow.appendChild(th);
+        table.appendChild(headerRow);
+
+        // Create table rows
+
+        data.forEach(function (obj) {
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+            td.textContent = count.toString();
+
+            tr.appendChild(td);
+            headers.forEach(function (header) {
+                var td = document.createElement('td');
+                td.textContent = obj[header];
+                tr.appendChild(td);
+            });
+
+            td = document.createElement('td');
+            let myButtonDetail = document.createElement("button-detail");
+            let myButtonDelete = document.createElement("button-delete");
+            myButtonDetail.className = "btn btn-green btn-detail";
+            myButtonDetail.innerText = "Chi tiết ";
+            var ma_tai_san = Object.values(data[count - 1]);
+            myButtonDetail.id = parseInt(ma_tai_san[0]);
+            td.appendChild(myButtonDetail)
+            myButtonDelete.className = "btn btn-red btn-delete";
+            myButtonDelete.innerText = "Xóa ";
+            td.appendChild(myButtonDelete)
+
+            tr.appendChild(td);
+            table.appendChild(tr);
+            count++;
+        });
+
+        return table;
+    }
+
+    var table = createTable(data);
+    // Add the table to your HTML page
+    document.getElementById('table').appendChild(table);
+
+
+</script>
+
+<script>
     const btnDetailList = Array.from(document.querySelectorAll('.btn-detail'));
     const btnDeleteList = document.querySelectorAll('.btn-delete');
     const modalDetail = document.querySelector('.modal');
@@ -664,6 +734,7 @@
 
     function openModal() {
         modalDetail.style.display = 'block';
+
     }
 
     function closeModal() {
@@ -674,12 +745,88 @@
         console.log(e);
     }
 
-    btnDetailList.forEach(btn => btn.addEventListener('click', openModal));
+    // btnDetailList.forEach(btn => btn.addEventListener('click', openModal));
     btnCancel.addEventListener('click', closeModal);
-
-
     filterBox.addEventListener('click', getFilterFields);
+
+    btnDetailList.forEach(btn => btn.addEventListener('click', () => {
+        openModal();
+        const ma_tai_san = btn.id;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/fetch-data-asset/" + ma_tai_san);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log(data[0]);
+                    const asset = data[0];
+                    const ma_tai_san = document.getElementById('ma-tai-san')
+                    ma_tai_san.innerText = asset['ma_tai_san'];
+                    const ten_tai_san = document.getElementById('ten-tai-san')
+                    ten_tai_san.value = asset['ten_tai_san'];
+                    const gia_tien = document.getElementById('gia-tien')
+                    gia_tien.value = asset['don_gia'];
+                    const loai_hang = document.getElementById('loai-tai-san')
+                    loai_hang.value = asset['loai_tai_san'];
+                    const hang_sx = document.getElementById('hang-san-xuat')
+                    hang_sx.value = asset['hang_san_xuat']
+                    const han_bao_hanh = document.getElementById('han-bao-hanh')
+                    han_bao_hanh.value = asset['han_bao_hanh']
+                    const ma_phieu_nhap = document.getElementById('ma-phieu-dien')
+                    ma_phieu_nhap.innerText = asset['ma_phieu_nhap']
+                    const ngay_nhap = document.getElementById('ngay-nhap')
+                    ngay_nhap.innerText = asset['ngay_nhap']
+                    const kich_hoat = document.getElementById('kich-hoat')
+                    if (asset['tinh_trang']) {
+                        kich_hoat.value = 'Da kich hoat'
+                    } else {
+                        kich_hoat.value = 'Chua kich hoat'
+                    }
+                    const tinh_trang = document.getElementById('tinh-trang')
+                    if (asset['trang_thai'] === 0) {
+                        tinh_trang.value = 'Tot'
+                    } else if (asset['trang_thai'] === 1) {
+                        tinh_trang.value = 'Bao hanh'
+                    } else if (asset['trang_thai'] === 2) {
+                        tinh_trang.value = 'Da thanh ly'
+                    } else {
+                        tinh_trang.value = 'Xoa'
+                    }
+
+                    const ma_ncc = document.getElementById('ma-ncc')
+                    ma_ncc.innerText = asset['ma_ncc']
+                    const ten_ncc = document.getElementById('ten-ncc')
+                    ten_ncc.innerText = asset['ten_ncc']
+                    const dia_chi = document.getElementById('dia-chi')
+                    dia_chi.innerText = asset['dia_chi_ncc']
+                    const sdt = document.getElementById('sdt')
+                    sdt.innerText = asset['sdt_ncc']
+                    const mota = document.getElementById('mo-ta')
+                    mota.value = asset['mo_ta']
+                } else {
+                    console.log("Error: " + xhr.status);
+                    // document.getElementById("modal-body").innerHTML = "Error fetching data.";
+                }
+            }
+        };
+        xhr.send();
+    }));
+
+    // function displayData(data) {
+    //     const container = document.getElementById("data-container");
+    //     container.innerHTML = "";
+    //     data.forEach(item => {
+    //         const div = document.createElement("div");
+    //         div.innerHTML = item.name + ", " + item.age;
+    //         container.appendChild(div);
+    //     });
+    // }
+
+
 </script>
+
+
 </body>
 
 </html>
