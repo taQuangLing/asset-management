@@ -41,12 +41,11 @@ Route::get('/quanlytaisan', [AssetDetailController::class, 'index'])->name('quan
 Route::get('/get-asset-detail', [AssetDetailController::class, 'index']);
 Route::get('/fetch-data-asset/{ma_tai_san}', [AssetDetailController::class, 'asset_detail']);
 
-Route::get('/search?ma_tai_san={ma_tai_san}?ma_phieu_nhap={ma_phieu_nhap}?
-loai_tai_san={loai_tai_san}?ncc={ncc}?start_date={from_date}?end_date={end_date}?han_bao_hanh={han_bao_hanh}',
-  [AssetDetailController::class, 'search']);
+Route::get('/search/{ma_tai_san?}/{ma_phieu_nhap?}/{loai_tai_san?}/{ncc?}/{from_date?}/{end_date?}/{han_bao_hanh?}', [AssetDetailController::class, 'search']);
+
 
 Route::get('/searchByName/{ten_tai_san}', [AssetDetailController::class, 'searchByName'])->name('searchByName');
 
-Route::post('/updateAsset', [AssetDetailController::class, 'updateAsset'])->name('updateAsset');
+Route::post('updateAsset', [AssetDetailController::class, 'updateAsset'])->name('updateAsset');
 
-Route::delete('/deleteAsset/{ma_tai_san}', [AssetDetailController::class, 'deleteAsset'])->name('deleteAsset');
+Route::get('/deleteAsset/{ma_tai_san}', [AssetDetailController::class, 'deleteAsset'])->name('deleteAsset');

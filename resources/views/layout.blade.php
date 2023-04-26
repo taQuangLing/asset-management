@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Document</title>
   {{--    <link rel="stylesheet" href="../css/app.css">--}}
   {{--    <link rel="stylesheet" href="../css/layout.css">--}}
@@ -463,17 +464,17 @@
       </div>
 
       <div class="filter">
-        <input class="input" type="text" placeholder="Ma tai san"/>
-        <input class="input" type="text" placeholder="Ma phieu nhap"/>
-        <input class="input" type="text" placeholder="Loai tai san"/>
-        <input class="input" type="text" placeholder="Nha cung cap"/>
-        Tu ngay: <input class="input" type="date" placeholder="Tu ngay"/>
-        Den ngay: <input class="input" type="date" placeholder="Den ngay"/>
+        <input id="fmataisan" class="input" type="text" placeholder="Ma tai san"/>
+        <input class="input" type="text" placeholder="Ma phieu nhap" id="fmaphieunhap"/>
+        <input class="input" type="text" placeholder="Loai tai san" id="floaitaisan"/>
+        <input class="input" type="text" placeholder="Nha cung cap" id="fncc"/>
+        Tu ngay: <input class="input" type="date" placeholder="Tu ngay" id="ftungay"/>
+        Den ngay: <input class="input" type="date" placeholder="Den ngay" id="fdenngay"/>
         <label class="checkbox-container">Han bao hanh
-          <input type="checkbox" checked="checked">
+          <input type="checkbox" checked="checked" id="fhanbaohanh">
           <span class="checkmark"></span>
         </label>
-        <button class="btn btn-green">Loc</button>
+        <button class="btn btn-green btn-filter">Loc</button>
       </div>
 
       <div style="text-align: start; margin-top: 20px;">
@@ -481,8 +482,9 @@
 
       </div>
 
-      <div class="table" id="table">
-
+      <div class="table" id="table-parent">
+        <table class="table" id="table">
+        </table>
       </div>
 
       <nav aria-label="pagination">
@@ -500,94 +502,97 @@
   </main>
 
   <div class="modal modal-active">
-    <div class="wrapper">
-      <h3 class="underline-after-text" id="thong-tin-tai-san">
-        Thông tin tài sản
-      </h3>
-      <div class="field-group">
-        <label>Mã tài sản :</label>
-        <p id="ma-tai-san">DXY00002</p>
-      </div>
-      <div class="field-group">
-        <label>Tên tài sản :</label>
-        <input class="input" id="ten-tai-san" type="text" value="Laptop Dell XPS 13 9320 i5 12340P">
-      </div>
-      <div class="field-group">
-        <label>Giá tiền:</label>
-        <input class="input" id="gia-tien" type="text" value="45.000.000">
-      </div>
-      <div class="field-group">
-        <label>Loại tài sản:</label>
-        <input class="input" id="loai-tai-san" type="text" value="Laptop">
-      </div>
-      <div class="field-group">
-        <label>Hãng sản xuất:</label>
-        <input class="input" id="hang-san-xuat" type="text" value="Nha may san xuat QuangLing">
-      </div>
-      <div class="field-group">
-        <label>Hạn bảo hành:</label>
-        <input class="input" id="han-bao-hanh" type="text" value="30/09/2024">
-      </div>
-      <div class="field-group">
-        <label>Ma phieu nhap:</label>
-        <p id="ma-phieu-dien">TQL0001</p>
-      </div>
-      <div class="field-group">
-        <label>Ngay nhap:</label>
-        <p id="ngay-nhap">20/01/2023</p>
-      </div>
-      <div class="field-group">
-        <label>Kich hoat:</label>
-        <select id="kich-hoat" class="input">
-          <option>Chua kich hoat</option>
-          <option>Da kich hoat</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Tinh trang:</label>
-        <select id="tinh-trang" class="input">
-          <option>Tot</option>
-          <option>Bao hanh</option>
-          <option>Da thanh ly</option>
-          <option>Xoa</option>
-        </select>
-      </div>
-      <h3 class=" underline-after-text">
-        Thong tin nha cung cap
-      </h3>
-      <div class="field-group">
-        <label>Ma nha cung cap:</label>
-        <p id="ma-ncc">TQL</p>
-      </div>
-      <div class="field-group">
-        <label>Ten nha cung cap:</label>
-        <p id="ten-ncc">Nha cung cap Qling</p>
-      </div>
-      <div class="field-group">
-        <label>Dia chi:</label>
-        <p id="dia-chi">Hai Ba Trung, Ha Noi</p>
-      </div>
-      <div class="field-group">
-        <label>So dien thoai:</label>
-        <p id="sdt">0123456789</p>
-      </div>
+    <form>
+      <div class="wrapper">
+        <h3 class="underline-after-text" id="thong-tin-tai-san">
+          Thông tin tài sản
+        </h3>
+        <div class="field-group">
+          <label>Mã tài sản :</label>
+          <p id="ma-tai-san">DXY00002</p>
+        </div>
+        <div class="field-group">
+          <label>Tên tài sản :</label>
+          <input class="input" id="ten-tai-san" type="text" value="Laptop Dell XPS 13 9320 i5 12340P">
+        </div>
+        <div class="field-group">
+          <label>Giá tiền:</label>
+          <input class="input" id="gia-tien" type="text" value="45.000.000">
+        </div>
+        <div class="field-group">
+          <label>Loại tài sản:</label>
+          <input class="input" id="loai-tai-san" type="text" value="Laptop">
+        </div>
+        <div class="field-group">
+          <label>Hãng sản xuất:</label>
+          <input class="input" id="hang-san-xuat" type="text" value="Nha may san xuat QuangLing">
+        </div>
+        <div class="field-group">
+          <label>Hạn bảo hành:</label>
+          <input class="input" id="han-bao-hanh" type="text" value="30/09/2024">
+        </div>
+        <div class="field-group">
+          <label>Ma phieu nhap:</label>
+          <p id="ma-phieu-dien">TQL0001</p>
+        </div>
+        <div class="field-group">
+          <label>Ngay nhap:</label>
+          <p id="ngay-nhap">20/01/2023</p>
+        </div>
+        <div class="field-group">
+          <label>Kich hoat:</label>
+          <select id="kich-hoat" class="input">
+            <option>Chua kich hoat</option>
+            <option>Da kich hoat</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Tinh trang:</label>
+          <select id="tinh-trang" class="input">
+            <option>Tot</option>
+            <option>Bao hanh</option>
+            <option>Da thanh ly</option>
+            <option>Xoa</option>
+          </select>
+        </div>
+        <h3 class=" underline-after-text">
+          Thong tin nha cung cap
+        </h3>
+        <div class="field-group">
+          <label>Ma nha cung cap:</label>
+          <p id="ma-ncc">TQL</p>
+        </div>
+        <div class="field-group">
+          <label>Ten nha cung cap:</label>
+          <p id="ten-ncc">Nha cung cap Qling</p>
+        </div>
+        <div class="field-group">
+          <label>Dia chi:</label>
+          <p id="dia-chi">Hai Ba Trung, Ha Noi</p>
+        </div>
+        <div class="field-group">
+          <label>So dien thoai:</label>
+          <p id="sdt">0123456789</p>
+        </div>
 
-      <h3 class="underline-after-text">
-        Mo ta tai san
-      </h3>
-      <div class="field-group">
-        <label>Mo ta:</label>
-        {{--                <input class="input" type="text" placeholder="Abxasfd...">--}}
-        <textarea id="mo-ta" rows="5" cols="60">
+        <h3 class="underline-after-text">
+          Mo ta tai san
+        </h3>
+        <div class="field-group">
+          <label>Mo ta:</label>
+          {{--                <input class="input" type="text" placeholder="Abxasfd...">--}}
+          <textarea id="mo-ta" rows="5" cols="60">
 
                 </textarea>
+        </div>
       </div>
-    </div>
 
-    <div class="action">
-      <button class="btn btn-green">Xong</button>
-      <button class="btn btn-red btn-close">Huy</button>
-    </div>
+      <div class="action">
+        <button class="btn btn-green btn-update" type="submit">Xong</button>
+        <button class="btn btn-red btn-close">Huy</button>
+      </div>
+    </form>
+
   </div>
 
 
@@ -596,15 +601,16 @@
 </div>
 
 <script>
-
+  const table = document.getElementById('table')
   const data = JSON.parse(document.getElementById('data').textContent);
   console.log("Data:", data);
 
   function createTable(data) {
-    var table = document.createElement('table');
+    var mTable = document.createElement('table');
+    mTable.className = 'table';
+    mTable.id = 'table';
     var headerRow = document.createElement('tr');
     var headers = Object.keys(data[0]);
-    var ma_tai_san = Object.values(data[1]);
     var count = 1
     // Create table headers
 
@@ -620,7 +626,7 @@
     th = document.createElement('th');
     th.textContent = 'Thao tác ';
     headerRow.appendChild(th);
-    table.appendChild(headerRow);
+    mTable.appendChild(headerRow);
 
     // Create table rows
 
@@ -646,19 +652,20 @@
       td.appendChild(myButtonDetail)
       myButtonDelete.className = "btn btn-red btn-delete";
       myButtonDelete.innerText = "Xóa ";
+      myButtonDelete.id = parseInt(ma_tai_san[0]);
       td.appendChild(myButtonDelete)
 
       tr.appendChild(td);
-      table.appendChild(tr);
+      mTable.appendChild(tr);
       count++;
     });
 
-    return table;
+    return mTable;
   }
 
-  var table = createTable(data);
+  var mTable = createTable(data);
   // Add the table to your HTML page
-  document.getElementById('table').appendChild(table);
+  document.getElementById('table').replaceWith(mTable);
 
 
 </script>
@@ -668,7 +675,33 @@
   const btnDeleteList = document.querySelectorAll('.btn-delete');
   const modalDetail = document.querySelector('.modal');
   const btnCancel = document.querySelector('.btn-close');
-  const filterBox = document.querySelector('.filter');
+  const btnUpdate = document.querySelector('.btn-update')
+  const filterBox = document.querySelector('.btn-filter');
+
+  const ma_tai_san = document.getElementById('ma-tai-san')
+  const ten_tai_san = document.getElementById('ten-tai-san')
+  const gia_tien = document.getElementById('gia-tien')
+  const hang_sx = document.getElementById('hang-san-xuat')
+  const loai_hang = document.getElementById('loai-tai-san')
+  const han_bao_hanh = document.getElementById('han-bao-hanh')
+  const ma_phieu_nhap = document.getElementById('ma-phieu-dien')
+  const ngay_nhap = document.getElementById('ngay-nhap')
+  const kich_hoat = document.getElementById('kich-hoat')
+  const tinh_trang = document.getElementById('tinh-trang')
+  const ma_ncc = document.getElementById('ma-ncc')
+  const ten_ncc = document.getElementById('ten-ncc')
+  const dia_chi = document.getElementById('dia-chi')
+  const sdt = document.getElementById('sdt')
+  const mota = document.getElementById('mo-ta')
+
+  const fmataisan = document.getElementById('fmataisan');
+  const fmaphieunhap = document.getElementById('fmaphieunhap');
+  const floaitaisan = document.getElementById('floaitaisan');
+  const fncc = document.getElementById('fncc');
+  const ftungay = document.getElementById('ftungay');
+  const fdenngay = document.getElementById('fdenngay');
+  const fhanbaohanh = document.getElementById('fhanbaohanh');
+
 
   function openModal() {
     modalDetail.style.display = 'block';
@@ -680,7 +713,62 @@
   }
 
   function getFilterFields(e) {
-    console.log(e);
+    let url = "/search/";
+
+    if (fmataisan.value) {
+      url += fmataisan.value + "/";
+    } else {
+      url += "/";
+    }
+
+    if (fmaphieunhap.value) {
+      url += fmaphieunhap.value + "/";
+    } else {
+      url += "/";
+    }
+
+    if (floaitaisan.value) {
+      url += floaitaisan.value + "/";
+    } else {
+      url += "/";
+    }
+
+    if (fncc.value) {
+      url += fncc.value + "/";
+    } else {
+      url += "/";
+    }
+
+    if (ftungay.value) {
+      url += ftungay.value + "/";
+    } else {
+      url += "/";
+    }
+
+    if (fdenngay.value) {
+      url += fdenngay.value + "/";
+    } else {
+      url += "/";
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          console.log(data);
+          createTable(data)
+          var mTable = createTable(data);
+          // Add the table to your HTML page
+          document.getElementById('table').replaceWith(mTable);
+        } else {
+          console.log("Error: " + xhr.status);
+        }
+      }
+    }
+    xhr.send();
   }
 
   // btnDetailList.forEach(btn => btn.addEventListener('click', openModal));
@@ -689,39 +777,29 @@
 
   btnDetailList.forEach(btn => btn.addEventListener('click', () => {
     openModal();
-    const ma_tai_san = btn.id;
+    const ma_ts = btn.id;
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "/fetch-data-asset/" + ma_tai_san);
+    xhr.open("GET", "/fetch-data-asset/" + ma_ts);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           const data = JSON.parse(xhr.responseText);
           console.log(data[0]);
           const asset = data[0];
-          const ma_tai_san = document.getElementById('ma-tai-san')
           ma_tai_san.innerText = asset['ma_tai_san'];
-          const ten_tai_san = document.getElementById('ten-tai-san')
           ten_tai_san.value = asset['ten_tai_san'];
-          const gia_tien = document.getElementById('gia-tien')
           gia_tien.value = asset['don_gia'];
-          const loai_hang = document.getElementById('loai-tai-san')
           loai_hang.value = asset['loai_tai_san'];
-          const hang_sx = document.getElementById('hang-san-xuat')
           hang_sx.value = asset['hang_san_xuat']
-          const han_bao_hanh = document.getElementById('han-bao-hanh')
           han_bao_hanh.value = asset['han_bao_hanh']
-          const ma_phieu_nhap = document.getElementById('ma-phieu-dien')
           ma_phieu_nhap.innerText = asset['ma_phieu_nhap']
-          const ngay_nhap = document.getElementById('ngay-nhap')
           ngay_nhap.innerText = asset['ngay_nhap']
-          const kich_hoat = document.getElementById('kich-hoat')
           if (asset['tinh_trang']) {
             kich_hoat.value = 'Da kich hoat'
           } else {
             kich_hoat.value = 'Chua kich hoat'
           }
-          const tinh_trang = document.getElementById('tinh-trang')
           if (asset['trang_thai'] === 0) {
             tinh_trang.value = 'Tot'
           } else if (asset['trang_thai'] === 1) {
@@ -732,15 +810,10 @@
             tinh_trang.value = 'Xoa'
           }
 
-          const ma_ncc = document.getElementById('ma-ncc')
           ma_ncc.innerText = asset['ma_ncc']
-          const ten_ncc = document.getElementById('ten-ncc')
           ten_ncc.innerText = asset['ten_ncc']
-          const dia_chi = document.getElementById('dia-chi')
           dia_chi.innerText = asset['dia_chi_ncc']
-          const sdt = document.getElementById('sdt')
           sdt.innerText = asset['sdt_ncc']
-          const mota = document.getElementById('mo-ta')
           mota.value = asset['mo_ta']
         } else {
           console.log("Error: " + xhr.status);
@@ -751,15 +824,51 @@
     xhr.send();
   }));
 
-  // function displayData(data) {
-  //     const container = document.getElementById("data-container");
-  //     container.innerHTML = "";
-  //     data.forEach(item => {
-  //         const div = document.createElement("div");
-  //         div.innerHTML = item.name + ", " + item.age;
-  //         container.appendChild(div);
-  //     });
-  // }
+  btnDeleteList.forEach(btn => btn.addEventListener('click', () => {
+    const ma_tai_san = btn.id;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "/deleteAsset/" + ma_tai_san);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          window.location.reload();
+        } else {
+          console.log("Error: " + xhr.status);
+        }
+      }
+    }
+    xhr.send();
+  }));
+
+  btnUpdate.addEventListener('click', (event) => {
+    event.preventDefault();
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/updateAsset");
+    xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          window.location.reload();
+        } else {
+          console.log("Error: " + xhr.status);
+        }
+      }
+    };
+    var params = {
+      ma_tai_san: ma_tai_san.innerText,
+      ten_tai_san: ten_tai_san.value,
+      gia_tien: gia_tien.value,
+      loai_tai_san: loai_hang.value,
+      hang_sx: hang_sx.value,
+      han_bao_hanh: han_bao_hanh.value,
+      kich_hoat: 0,
+      tinh_trang: 0,
+      mota: mota.value
+    };
+    xhr.send(JSON.stringify(params));
+    console.log(JSON.stringify(params))
+
+  });
 
 
 </script>

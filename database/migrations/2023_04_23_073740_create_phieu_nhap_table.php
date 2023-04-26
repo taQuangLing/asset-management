@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigInteger('tong_gia');
             $table->dateTime('ngay_nhap');
             $table->char('ma_nhan_vien', 10);
-            $table->foreign('ma_nhan_vien')->references('ma_nhan_vien')->on('staffs');
+            $table->foreign('ma_nhan_vien')->references('ma_nhan_vien')->on('staffs')->onDelete('cascade')
+              ->onUpdate('cascade');
         });
     }
 

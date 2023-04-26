@@ -20,8 +20,12 @@ return new class extends Migration
             $table->tinyInteger('trang_thai');
             $table->dateTime('ngay_lap');
             $table->char('ma_nhan_vien', 10);
-            $table->foreign('ma_tai_san')->references('ma_tai_san')->on('assets');
-            $table->foreign('ma_nhan_vien')->references('ma_nhan_vien')->on('staffs');
+            $table->foreign('ma_tai_san')->references('ma_tai_san')->on('assets')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
+            $table->foreign('ma_nhan_vien')->references('ma_nhan_vien')->on('staffs')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
         });
     }
 

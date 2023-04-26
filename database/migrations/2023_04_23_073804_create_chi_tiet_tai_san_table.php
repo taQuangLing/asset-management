@@ -17,8 +17,12 @@ return new class extends Migration {
             $table->char('ma_tai_san', 10);
             $table->bigInteger('don_gia');
             $table->integer('so_luong');
-            $table->foreign('ma_phieu_nhap')->references('ma_phieu_nhap')->on('coupons');
-            $table->foreign('ma_tai_san')->references('ma_tai_san')->on('assets');
+            $table->foreign('ma_phieu_nhap')->references('ma_phieu_nhap')->on('coupons')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
+            $table->foreign('ma_tai_san')->references('ma_tai_san')->on('assets')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
         });
     }
 
