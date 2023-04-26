@@ -15,6 +15,6 @@ class GuaranteeInfoSeeder extends Seeder
      */
     public function run()
     {
-        GuaranteeInfo::factory()->count(50)->create();
+        GuaranteeInfo::factory()->count(10)->create();
     }
 }
