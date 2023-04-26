@@ -44,11 +44,13 @@ body {
   transition: all .3s ease;
 }
 
-.btn-green {
+.btn-green,
+.btn-allocation {
   background-color: var(--color-green--);
 }
 
-.btn-red {
+.btn-red,
+.btn-recovery {
   background-color: red;
 }
 
@@ -62,6 +64,8 @@ body {
   border-color: var(--color-yellow--);
 }
 
+.btn-allocation:hover,
+.btn-allocation:focus,
 .btn-green:hover,
 .btn-green:focus {
   background-color: white;
@@ -69,6 +73,8 @@ body {
   border-color: var(--color-green--);
 }
 
+.btn-recovery:hover,
+.btn-recovery:focus,
 .btn-red:hover,
 .btn-red:focus {
   background-color: white;
