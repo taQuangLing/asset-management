@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/quanlycapphat.css">
-</head>
-
-<body>
-<div class="layout">
-  <header>
-    <div class="logo">Logo</div>
-    <div class="user">
-      <button class="btn btn-green">Đăng xuất</button>
-      <span class="user-info">
-          avatar icon
-        </span>
-    </div>
-  </header>
-  <main>
-    <div class="sidebar">
-      <ul>
-        <li>Quản lý tài sản</li>
-        <li>Quản lý phiếu nhập</li>
-        <li class="active">Quản lý bảo hành</li>
-        <li>Quản lý cấp phát</li>
-        <li>Kiểm kê tài sản</li>
-        <li>Thống kê báo cáo</li>
-      </ul>
-    </div>
-    <div class="main">
-      <div class="search">
-        <div>
-          <input class="input" type="text" placeholder="Mã phiếu nhập" />
-          <button class="btn btn-green">Tìm kiếm</button>
-        </div>
-      </div>
-      <div class="allocation-filter">
+<div class="allocation-filter">
         <span class="filter-type filter-allocated filter-active">Đã cấp phát</span>
         <span class="filter-type filter-not-allocate">Chưa cấp phát</span>
       </div>
@@ -111,9 +69,8 @@
         </ul>
       </nav>
     </div>
-  </main>
 
-  <div class="modal modal-asset-detail modal-active">
+    <div class="modal modal-asset-detail modal-active">
     <div class="wrapper">
       <h3 class="underline-after-text">
         Thông tin tài sản
@@ -180,10 +137,3 @@
       <button class="btn btn-yellow btn-close">Hủy</button>
     </div>
   </div>
-
-</div>
-
-<script type="module" src="../js/quanlycapphat.js"></script>
-</body>
-
-</html>

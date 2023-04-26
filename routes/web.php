@@ -21,10 +21,18 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/quanlytaisan', function () {
+Route::get('/taisan', function () {
     return view('layout');
-})->name('quanlytaisan');
+})->name('taisan');
 
 Route::get('/phieunhap', function () {
-    return view('quanlyphieunhap');
+    return view('layout');
 })->name('phieunhap');
+
+Route::get('/capphat', function () {
+    return view('layout');
+})->name('capphat');
+
+Route::get('/baohanh', function () {
+    return view('layout');
+})->name('baohanh');
