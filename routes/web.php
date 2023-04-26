@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,18 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('layout');
+    return view('welcome');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/taisan', function () {
+Route::get('/quanlytaisan', function () {
     return view('layout');
-})->name('taisan');
+})->name('quanlytaisan');
 
 Route::get('/phieunhap', function () {
-    return view('layout');
+    return view('quanlyphieunhap');
 })->name('phieunhap');
 
 Route::get('/capphat', function () {
