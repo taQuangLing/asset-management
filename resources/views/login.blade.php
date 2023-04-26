@@ -22,48 +22,37 @@
         }
 
         input[type=text], input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
+            width: 60%;
+            height: 35px;
             margin: 8px 0;
             display: inline-block;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            padding-left: 10px;
+            font-size: 14px;
+
         }
 
         button[type=submit] {
-            background-color: #4CAF50;
+            width: 210px;
+            font-size: 24px;
+            margin: 0 auto;
+            background-color: #87C540;
             color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
+            height: 45px;
         }
 
         button[type=submit]:hover {
             background-color: #45a049;
         }
 
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            background-color: #f44336;
-        }
-
-        .imgcontainer {
-            text-align: center;
-            margin: 24px 0 12px 0;
-        }
-
-        img.avatar {
-            width: 40%;
-            border-radius: 50%;
-        }
-
         .container {
             padding: 16px;
+            width: 70%;
+            margin: 0 auto;
         }
 
         span.psw {
@@ -76,39 +65,40 @@
                 width: 100%;
             }
         }
+        label{
+            font-size: 20px;
+        }
     </style>
 </head>
-<body>
+<body style="all:unset; background: #D3EDBD">
+ <div>
+     <div style="color: white">
+         <h1 style="padding: 20px 20px;margin: 0;text-align: center; background: #60902C; font-size: 40px">HỆ THỐNG QUẢN LÝ THÔNG TIN TÀI SẢN THIẾT BỊ</h1>
+     </div>
+     <div style="margin: 0 auto; margin-top: 100px; width: 40%;">
+         <form method="POST" action="{{ route('login') }}" style="width: 100%">
+             <h1 style="font-size: 70px; text-align: center; color: #60902C;">ĐĂNG NHẬP</h1>
+             @csrf
+             <div class="container">
+                 <label for="username" style="margin-right: 66px;">Email<label style="color: red"> *</label></label>
+                 <input id="username" type="text" name="username" value="{{ old('username') }}" style="width: 400px"
+                        required autofocus><br>
 
-<form method="POST" action="{{ route('login') }}">
-    <div class="imgcontainer">
-        <img
-            src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-1/336171687_129162599933758_439339820751928032_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=xM9NVGHRHwUAX8LJYml&_nc_ht=scontent.fhan1-1.fna&oh=00_AfDXs0xiqn-k64SgAQS_wgf4ElmBn07RCvh5L7dzh9npCQ&oe=644A4641"
-            alt="Avatar" class="avatar">
-    </div>
+                 <label for="password" style="margin-right: 37px;">{{ __('Mật khẩu') }}<label style="color: red"> *</label></label>
+                 <input id="password" type="password"name="password" style="width: 400px" required
+                        autocomplete="current-password">
+                 <div style="width: 100%;display: grid;height: auto;">
+                     <label style="text-align: right">
+                         Ghi nhớ<input type="checkbox" checked="checked" name="remember">
+                     </label>
+                 </div>
+                 <div style="width: 100%; display: flex">
+                     <button type="submit" style="margin-top: 40px;">Đăng nhập</button>
+                 </div>
 
-    <h2>Login Form</h2>
-    @csrf
-    <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input id="username" type="text" placeholder="Enter Username" name="username" value="{{ old('username') }}"
-               required autofocus>
-
-        <label for="password">{{ __('Password') }}</label>
-        <input id="password" type="password" placeholder="Enter Password" name="password" required
-               autocomplete="current-password">
-
-        <button type="submit">Login</button>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-</form>
-
+             </div>
+         </form>
+     </div>
+ </div>
 </body>
 </html>
