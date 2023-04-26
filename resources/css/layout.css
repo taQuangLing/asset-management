@@ -151,7 +151,6 @@ nav {
   transform: translate(-50%, -50%);
   z-index: 5;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.15);
   width: 1000px;
   height: 800px;
@@ -165,8 +164,7 @@ nav {
 }
 
 .modal .wrapper {
-  padding: 20px 30px;
-  padding-bottom: 0;
+  padding: 20px 30px 0;
 }
 
 .field-group {
@@ -183,9 +181,14 @@ nav {
 }
 
 .field-group input,
-.field-group select {
+.field-group select,
+.field-group textarea {
   width: 100%;
-  cursor: pointer;
+}
+
+.field-group textarea {
+  height: 100px;
+  padding: 10px 0 10px 10px;
 }
 
 .field-group p {
@@ -207,5 +210,4 @@ nav {
 
 .action .btn {
   margin-right: 20px;
-  width: 100px;
 }

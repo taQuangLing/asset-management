@@ -15,6 +15,6 @@ class DispensingInfoSeeder extends Seeder
      */
     public function run()
     {
-        DispensingInfo::factory()->count(10)->create();
+        DispensingInfo::factory()->count(50)->create();
     }
 }

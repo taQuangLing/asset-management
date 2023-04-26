@@ -15,6 +15,6 @@ class LiquidationListSeeder extends Seeder
      */
     public function run()
     {
-        LiquidationList::factory()->count(10)->create();
+        LiquidationList::factory()->count(50)->create();
     }
 }
