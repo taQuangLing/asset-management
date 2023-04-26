@@ -17,9 +17,10 @@ class AssetFactory extends Factory
      */
     public function definition()
     {
+        $availableProvider = Provider::all();
         return [
             'ma_tai_san' => $this->faker->unique()->randomNumber(5),
-            'ma_ncc' => Provider::factory(),
+            'ma_ncc' => $availableProvider->random()->ma_ncc,
             'ten_tai_san' => $this->faker->sentence(3),
             'loai_tai_san' => $this->faker->word,
             'hang_san_xuat' => $this->faker->company,

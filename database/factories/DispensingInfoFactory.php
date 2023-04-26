@@ -18,11 +18,13 @@ class DispensingInfoFactory extends Factory
      */
     public function definition()
     {
+        $availableAssets = Asset::all();
+        $availableStaffs = Staff::all();
         return [
             'ma_cap_phat' => $this->faker->unique()->randomNumber(5),
-            'ma_tai_san'=> Asset::factory(),
+            'ma_tai_san'=> $availableAssets->random()->ma_tai_san,
             'ngay_cap' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'ma_nhan_vien' => Staff::factory(),
+            'ma_nhan_vien' => $availableStaffs->random()->ma_nhan_vien,
             'doi_tuong' => $this->faker->text(100),
         ];
     }

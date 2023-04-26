@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PDO;
 
 class LoginController extends Controller
@@ -41,7 +42,14 @@ class LoginController extends Controller
         if ($this->validateUser($username, $password)) {
             // Authentication successful
             // Redirect to dashboard or homepage
-            return redirect()->route('quanlytaisan');
+            $data = DB::table('asset_detail')
+                ->join('assets', 'asset_detail.ma_tai_san', '=', 'assets.ma_tai_san')
+                ->join('coupons', 'asset_detail.ma_phieu_nhap', '=', 'coupons.ma_phieu_nhap')
+                ->join('providers', 'assets.ma_ncc', '=', 'providers.ma_ncc')
+                ->select('asset_detail.ma_tai_san', 'asset_detail.ma_phieu_nhap', 'assets.ten_tai_san',
+                    'assets.loai_tai_san', 'asset_detail.don_gia', 'asset_detail.so_luong', 'assets.han_bao_hanh', 'providers.ten_ncc')
+                ->get();
+            return redirect()->route('quanlytaisan', ['data' => $data]);
         } else {
             // Authentication failed
             // Redirect back to login form with error message

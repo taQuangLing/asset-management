@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<div id="data" style="display:none;">{{ $data }}</div>
 <div class="layout">
   <header>
     <div class="imgcontainer">
