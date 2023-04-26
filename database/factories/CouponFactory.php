@@ -17,11 +17,12 @@ class CouponFactory extends Factory
      */
     public function definition()
     {
+        $availableStaffs = Staff::all();
         return [
             'ma_phieu_nhap' => $this->faker->unique()->randomNumber(5),
             'tong_gia' => $this->faker->randomNumber(7),
             'ngay_nhap' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'ma_nhan_vien' => Staff::factory(),
+            'ma_nhan_vien' => $availableStaffs->random()->ma_nhan_vien,
         ];
     }
 }

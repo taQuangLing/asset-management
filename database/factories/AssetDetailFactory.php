@@ -18,9 +18,11 @@ class AssetDetailFactory extends Factory
      */
     public function definition()
     {
+        $availableAssets = Asset::all();
+        $availableCoupons = Coupon::all();
         return [
-            'ma_phieu_nhap' => Coupon::factory(),
-            'ma_tai_san' => Asset::factory(),
+            'ma_phieu_nhap' => $availableCoupons->random()->ma_phieu_nhap,
+            'ma_tai_san' => $availableAssets->random()->ma_tai_san,
             'don_gia' => $this->faker->numberBetween(1000000, 10000000),
             'so_luong' => $this->faker->numberBetween(1, 100),
         ];

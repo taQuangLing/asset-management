@@ -18,6 +18,6 @@ class ProviderSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
         DB::table('providers')->truncate();
-        Provider::factory()->count(10)->create();
+        Provider::factory()->count(20)->create();
     }
 }

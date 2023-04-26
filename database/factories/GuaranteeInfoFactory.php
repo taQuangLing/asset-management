@@ -18,10 +18,13 @@ class GuaranteeInfoFactory extends Factory
      */
     public function definition()
     {
+        // Get all available assets
+        $availableAssets = Asset::all();
+        $availableStaffs = Staff::all();
         return [
             'ma_bao_hanh' => $this->faker->unique()->randomNumber(5),
-            'ma_tai_san' => Asset::factory(),
-            'ma_nhan_vien' => Staff::factory(),
+            'ma_tai_san' => $availableAssets->random()->ma_tai_san,
+            'ma_nhan_vien' => $availableStaffs->random()->ma_nhan_vien,
             'ngay_tiep_nhan_BH' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'ngay_du_kien_ban_giao' => $this->faker->dateTimeBetween('now', '+1 month'),
             'ngay_ban_giao' => $this->faker->dateTimeBetween('+1 month', '+2 month'),
