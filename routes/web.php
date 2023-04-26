@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,28 +16,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/quanlytaisan', function () {
-    return view('layout');
-})->name('quanlytaisan');
 
 Route::get('/phieunhap', function () {
-    return view('quanlyphieunhap');
+  return view('quanlyphieunhap');
 })->name('phieunhap');
 
 Route::get('/capphat', function () {
-    return view('layout');
+  return view('quanlycapphat');
 })->name('capphat');
 
 Route::get('/baohanh', function () {
-    return view('layout');
+  return view('quanlybaohanh');
 })->name('baohanh');
-// Route::get('/quanlytaisan', [AssetDetailController::class, 'index'])->name('quanlytaisan');
+
+Route::get('/quanlytaisan', [AssetDetailController::class, 'index'])->name('quanlytaisan');
 
 
 Route::get('/get-asset-detail', [AssetDetailController::class, 'index']);
