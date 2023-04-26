@@ -3,6 +3,10 @@
   --color-green--: #87c540;
   --color-green-light--: #e7fada;
   --color-green-dark--: #badaa6;
+  --color-yellow--: #debe00;
+
+  --transition--: all .3s ease;
+
 }
 
 body {
@@ -12,13 +16,7 @@ body {
   list-style: none;
 }
 
-.btn-green {
-  background-color: var(--color-green--);
-}
 
-.btn-red {
-  background-color: red;
-}
 
 /* BUTTON */
 .btn {
@@ -29,7 +27,6 @@ body {
   cursor: pointer;
   display: inline-block;
   font-size: 13px;
-  font-weight: 400;
   line-height: 1.15385;
   margin: 0;
   color: white;
@@ -45,6 +42,24 @@ body {
   vertical-align: baseline;
   white-space: nowrap;
   transition: all .3s ease;
+}
+
+.btn-green {
+  background-color: var(--color-green--);
+}
+
+.btn-red {
+  background-color: red;
+}
+
+.btn-yellow {
+  background-color: var(--color-yellow--);
+}
+
+.btn-yellow:hover {
+  background-color: white;
+  color: var(--color-yellow--);
+  border-color: var(--color-yellow--);
 }
 
 .btn-green:hover,
@@ -72,8 +87,7 @@ body {
 }
 
 .input {
-  padding: 10px 10px;
-  padding-right: 0;
+  padding: 10px 0 10px 10px;
   border-radius: 6px;
   outline: none;
   border: 1px solid #87c540;
@@ -88,7 +102,6 @@ table {
 
 table tr th {
   border: solid 1px black;
-  font-weight: 600;
   height: 60px;
   font-weight: 600;
   background-color: var(--color-gray--);
@@ -163,7 +176,7 @@ table tr td {
   background-color: #2196F3;
 }
 
- /*Create the checkmark/indicator (hidden when not checked) */
+/*Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
